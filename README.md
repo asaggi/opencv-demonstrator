@@ -28,7 +28,7 @@ libswscale-dev libv4l-dev libgtk2.0-dev libatlas-base-dev gfortran libgtkmm-3.0-
 
 #openCV
 1. git clone [OpenCV 3.0](https://github.com/asaggi/opencv.git)
-2. git clone [opnCV-contrib](git clone https://github.com/opencv/opencv_contrib.git)
+2. git clone [openCV-contrib](https://github.com/opencv/opencv_contrib.git)
 2. cd opencv
 3. mkdir build
 4. cd build
