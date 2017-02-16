@@ -20,45 +20,44 @@ The project is written in C++. The following open source libraries are used:
 - [pugixml](http://pugixml.org/) for XML parsing
 
 
-## Pre-built binaries
-
-If you just want to try OpenCV without having to write any line of code, or if
-you want to just test the OpenCV demonstrator, you can simply download and
-install the lastest stable binary package, which can be found on the
-[OpenCV demonstrator web page](http://www.tsdconseil.fr/log/opencv/demo/index-en.html)
-(for now only Windows binary installer is available, but a `.deb` should be
-available soon).
-
-
 ## Build from source
 
-If you want to build the demonstrator from the source code, please follow the
-build instructions that are located in the file
-[doc/build-instructions.md](doc/build-instructions.md).
+#Prereqs
+sudo apt-get install build-essential cmake git pkg-config libjpeg8-dev libtiff4-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev     
+libswscale-dev libv4l-dev libgtk2.0-dev libatlas-base-dev gfortran libgtkmm-3.0-1 libgtkmm-3.0-dev libgtkmm-3.0-doc
+
+#openCV
+1. git clone [OpenCV 3.0](https://github.com/asaggi/opencv.git)
+2. git clone [opnCV-contrib](git clone https://github.com/opencv/opencv_contrib.git)
+2. cd opencv
+3. mkdir build
+4. cd build
+5. cmake \
+	-DCMAKE_BUILD_TYPE=RELEASE \
+	-DCMAKE_INSTALL_PREFIX=~/usr/local \
+	-DINSTALL_C_EXAMPLES=ON \
+	-DOPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+	-DBUILD_EXAMPLES=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DWITH_GTK=ON  ../ 
+
+6. make --jobs=4
+7. sudo make install
+8. sudo ldconfig
+
+#opencv-demonstrator
+
+1. export OCVIPATH="~/usr/local/include"
+2. export OCVLPATH="~/usr/local/lib"
+3. git clone [openCV-demonstrator](https://github.com/asaggi/opencv-demonstrator-1.git)
+4. cd opencv-demonstrator
+5. make linux
 
 
-## Contributing
+##Running
 
-Contributions are welcome! If you wish to add your own demonstration, please
-have a look to the
-[tutorial for adding a new demonstration item](doc/tutorial-new-demo.md).
-
-
-## Road map
-
-- Better documentation and clean-up of the code to enable easier contributions from the community
-- Better support for Windows, Linux, and Mac OSX (detailled build instructions, binary packages)
-- Improve localization (e.g. translations)
-- Increase coverage of OpenCV functions
-- Tests
-- GUI improvements (multiple filters, scripting support, etc.)
-
-**Note:** For a detailled description of forecasted technical enhancements,
-please have a look at the list issues tagged as "enhancement".
-
-## Authors
-
-See [CONTRIBUTORS.md](CONTRIBUTORS.md).
+1. cd opencv-demonstrator/ocvdemo
+2. ./build/debug/ocvdemo.exe
 
 
 ## License
